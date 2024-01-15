@@ -1,0 +1,54 @@
+[
+  {
+    "id": 1,
+    "type": "radiobutton",
+    "question" : "What is the capital of France?",
+    "answer" : [
+      "Paris",
+      "London",
+      "Berlin",
+      "Madrid"
+    ],
+    "correct" : "Paris",
+    "score" : 1
+  },
+  {
+    "id": 2,
+    "type": "radiobutton",
+    "question" : "What is the capital of Germany?",
+    "answer" : [
+      "Paris",
+      "London",
+      "Berlin",
+      "Madrid"
+    ],
+    "correct" : "Berlin",
+    "score" : 1
+  },
+  {
+    "id": 3,
+    "type": "radiobutton",
+    "question" : "What is the capital of Spain?",
+    "answer" : [
+      "Paris",
+      "London",
+      "Berlin",
+      "Madrid"
+    ],
+    "correct" : "Madrid",
+    "score" : 1
+  },
+  {
+    "id": 4,
+    "type": "radiobutton",
+    "question" : "What is the capital of England?",
+    "answer" : [
+      "Paris",
+      "London",
+      "Berlin",
+      "Madrid"
+    ],
+    "correct" : "London",
+    "score" : 1
+  }
+]
