@@ -1,46 +1,47 @@
 <?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST["username"];
+    $score = $_POST["score"];
 
-date_default_timezone_set('Europe/Paris');
-try{
-  // le fichier de BD s'appellera contacts.sqlite3
-  $file_db=new PDO('sqlite:bd.sqlite3');
-  $file_db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_WARNING);
-  $file_db->exec("CREATE TABLE IF NOT EXISTS score ( 
-    username TEXT PRIMARY KEY,
-    score INTEGER)");
+    date_default_timezone_set('Europe/Paris');
+    try {
+        // le fichier de BD s'appellera contacts.sqlite3
+        $file_db = new PDO('sqlite:bd.sqlite3');
+        $file_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+        $file_db->exec("CREATE TABLE IF NOT EXISTS score ( 
+            username TEXT PRIMARY KEY,
+            score INTEGER)");
 
-  $scores=array(
-    array('username' => 'Leni',
-      'score' => 'NULL'),
-    array('username' => 'Antoine',
-      'score' => 'NULL'),
-    array('username' => 'Liam',
-      'score' => 'NULL'));
+        // Utilisez REPLACE INTO au lieu de INSERT INTO pour éviter l'erreur de contrainte UNIQUE
+        $replace = "REPLACE INTO score (username, score) VALUES (:username, :score)";
+        $stmt = $file_db->prepare($replace);
 
-    $insert="INSERT INTO score (username,score) VALUES (:username, :score)";
-  $stmt=$file_db->prepare($insert);
-  // on lie les parametres aux variables
-  $stmt->bindParam(':username',$username);
-  $stmt->bindParam(':score',$score);
+        // Affiche les valeurs avant l'exécution
+        echo "Username: $username, Score: $score";
 
-  foreach ($scores as $c){
-    $username=$c['username'];
-    $score=$c['score'];
-    $stmt->execute();
-  }
-  
-  echo "Insertion en base reussie !";
+        // on lie les paramètres aux variables
+        $stmt->bindParam(':username', $username);
 
-  $result=$file_db->query('SELECT * from score');
-  foreach ($result as $m){
-    echo "<br/>\n".$m['username'].' '.$m['score'];
-  }
-  // on ferme la connexion
-  $file_db=null;
+        // Utilisez directement la valeur de $score
+        $stmt->bindValue(':score', $score, PDO::PARAM_INT);
 
+        // exécute la requête
+        $stmt->execute();
 
+        echo "Insertion en base réussie !";
 
-}catch(PDOException $ex){
-    echo $ex->getMessage();
+        // Affiche les résultats de la base de données
+        $result = $file_db->query('SELECT * FROM score');
+        foreach ($result as $m) {
+            echo "<br/>\n" . $m['username'] . ' ' . $m['score'];
+        }
+
+        // on ferme la connexion
+        $file_db = null;
+    } catch (PDOException $ex) {
+        echo "Erreur : " . $ex->getMessage();
+    }
+} else {
+    echo "Le formulaire n'a pas été soumis correctement.";
 }
 ?>

@@ -46,6 +46,15 @@
 
         echo "</ul>";
         echo "<h2>Votre score est : ".$score."</h2>";
+        echo "<p>Enregistrez votre score : </p>";
+        echo "<form action='bd.php' method='POST'>";
+        echo '<label for="username">Entrez votre nom : </label>';
+        echo "<input type='text' requiered value='Votre nom' name='username' id='username'/>";
+        echo '<label for="score">Votre score est : </label>';
+        echo "<input type='number' requiered value=".$score." name='score' id='score' disabled/>";
+        echo '<input type="submit" value="Valider">';
+        echo '</form>';
+        
     } else {
         echo "<p>Le formulaire n'a pas été soumis correctement.</p>";
     }
