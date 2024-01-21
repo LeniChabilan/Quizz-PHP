@@ -50,5 +50,57 @@
     ],
     "correct" : "London",
     "score" : 1
-  }
+  },
+  {
+      "id": 5,
+      "type": "radiobutton",
+      "question" : "What is the largest planet in our solar system?",
+      "answer" : [
+        "Mars",
+        "Jupiter",
+        "Venus",
+        "Saturn"
+      ],
+      "correct" : "Jupiter",
+      "score" : 1
+    },
+    {
+      "id": 6,
+      "type": "radiobutton",
+      "question" : "Which continent is known as the 'Land of the Rising Sun'?",
+      "answer" : [
+        "Asia",
+        "Europe",
+        "Australia",
+        "North America"
+      ],
+      "correct" : "Asia",
+      "score" : 1
+    },
+    {
+      "id": 7,
+      "type": "radiobutton",
+      "question" : "In which year did the Titanic sink?",
+      "answer" : [
+        "1912",
+        "1920",
+        "1935",
+        "1941"
+      ],
+      "correct" : "1912",
+      "score" : 1
+    },
+    {
+      "id": 8,
+      "type": "radiobutton",
+      "question" : "Which element has the chemical symbol 'O'?",
+      "answer" : [
+        "Oxygen",
+        "Gold",
+        "Silver",
+        "Copper"
+      ],
+      "correct" : "Oxygen",
+      "score" : 1
+    }
 ]
