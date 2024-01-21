@@ -49,9 +49,9 @@
         echo "<p>Enregistrez votre score : </p>";
         echo "<form action='bd.php' method='POST'>";
         echo '<label for="username">Entrez votre nom : </label>';
-        echo "<input type='text' requiered value='Votre nom' name='username' id='username'/>";
+        echo "<input type='text' requiered placeholder='Votre nom' name='username' id='username'/>";
         echo '<label for="score">Votre score est : </label>';
-        echo "<input type='number' requiered value=".$score." name='score' id='score' disabled/>";
+        echo "<input type='number' requiered value=".$score." name='score' id='score' readonly/>";
         echo '<input type="submit" value="Valider">';
         echo '</form>';
         
