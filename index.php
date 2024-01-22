@@ -26,6 +26,7 @@ use Form\Type\Hidden;
     <form action="Submit.php" method="POST">
     <?php
         foreach ($tableau as $field) {
+            /**on récupère les informations sur les questions dans le Json et on les affiches */
             echo "<p>{$field['question']}</p>";
             
             foreach($field['answer'] as $reponse) {
@@ -38,6 +39,7 @@ use Form\Type\Hidden;
             echo "<br>";
         }
         ?>
+        
         <input type="submit" value="Valider">
     </form>
 </body>
