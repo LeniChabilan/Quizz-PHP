@@ -9,6 +9,7 @@
     <h1>Résultats du Formulaire</h1>
 
     <?php
+    //on charge le Json et on stock les réponses et les scores dans des listes
     $dico = file_get_contents("./Data/product.json");
     $tableau = json_decode($dico, true);
     $listeRep= array();
@@ -17,7 +18,7 @@
         array_push($listeRep,$tab['correct']);
         array_push($listeScore,$tab['score']);
     }
-
+    //on vérifie si les réponses sont correctes, on met à jour le score du joueur, et on affiche les réponses soumises, ainsi que le score
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<h2>Réponses soumises :</h2>";
         echo "<ul>";
@@ -40,14 +41,15 @@
         echo "<ul>";
         $indi=1;
         foreach ($listeRep as $reponse) {
+            //on affiche les bonnes réponses
             echo "<li>Reponse correcte à la question $indi : $reponse";
             $indi+=1;
         }
-
+        //création d'un formulaire qui permet de rentrer le nom du joueur et de stocker en BD son score et son nom
         echo "</ul>";
         echo "<h2>Votre score est : ".$score."</h2>";
         echo "<p>Enregistrez votre score : </p>";
-        echo "<form action='bd.php' method='POST'>";
+        echo "<form action='bd.php' method='POST'>"; //on affiche une autre page lorsque le formulaire est validé
         echo '<label for="username">Entrez votre nom : </label>';
         echo "<input type='text' requiered placeholder='Votre nom' name='username' id='username'/>";
         echo '<label for="score">Votre score est : </label>';
